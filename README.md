@@ -1,6 +1,9 @@
 # WEC2022 - Maze Generator and Solution
 ## Depth-First Search (DFS) Algorithm
 
+# Video Demo
+https://youtu.be/Lam1gncWl7A
+
 # Test
 1. Install Python 3.10.7 on your computer
 2. Open the command line and navigate to the project directory
