@@ -7,7 +7,9 @@
 4. Type and enter **python maze.py** to start the program
 
 # Generator
+![Screenshot (10)](https://user-images.githubusercontent.com/32439767/204084194-cb8a87a4-4c3c-462b-9a6a-0d73eef60d5a.png)
 ![20221126_051419](https://user-images.githubusercontent.com/32439767/204083970-b82036d3-5939-4c4c-8516-f0243f020338.jpg)
 
 # Solution
+![Screenshot (11)](https://user-images.githubusercontent.com/32439767/204084208-58974b35-da96-4e7b-b60d-141c72ecea4f.png)
 ![20221126_051435](https://user-images.githubusercontent.com/32439767/204083955-45db0cc1-9b4f-4160-aed7-f3f055c416e7.jpg)
