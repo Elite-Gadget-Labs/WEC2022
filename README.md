@@ -1,4 +1,5 @@
-# WEC2022
+# WEC2022 - Maze Generator and Solution
+## Depth-First Search (DFS) Algorithm
 
 # Test
 1. Install Python 3.10.7 on your computer
@@ -24,3 +25,10 @@
 
 ## Hard
 ![Screenshot (17)](https://user-images.githubusercontent.com/32439767/204084435-99860487-3b21-4572-a0fb-b4f3db467706.png)
+
+# References
+- https://www.youtube.com/watch?v=sVcB8vUFlmU
+- https://www.youtube.com/watch?v=Xthh4SEMA2o
+- https://www.pygame.org/docs/ref/rect.html#pygame.Rect
+- https://github.com/tonypdavis/PythonMazeGenerator
+- https://realpython.com/pygame-a-primer/
