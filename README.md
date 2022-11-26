@@ -4,9 +4,9 @@
 # Test
 1. Install Python 3.10.7 on your computer
 2. Open the command line and navigate to the project directory
-3. Type and enter **pip install pygame**
-4. Type and enter **python maze.py** to start the program
-5. To change difficulty, decrease the CELL_WIDTH variable in Cell.py. This will drastically increase the size and compexity of the maze
+3. Type and enter ```pip install pygame```
+4. Type and enter ```python maze.py``` to start the program
+5. To change difficulty, decrease the **CELL_WIDTH** variable in Cell.py. This will drastically increase the size and compexity of the maze
 
 # Generator
 ![Screenshot (10)](https://user-images.githubusercontent.com/32439767/204084194-cb8a87a4-4c3c-462b-9a6a-0d73eef60d5a.png)
