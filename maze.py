@@ -8,7 +8,6 @@ from pprint import pprint
 # -------- Defining useful constants -----------
 # Colors
 GREY = (20, 20, 20)
-BLUE = (0, 0, 255)
 PURPLE = (100, 0, 100)
 
 # Screen dimensions (pixels)
@@ -30,32 +29,29 @@ pygame.display.set_caption("Maze Generator")
 
 # -------- Defining Solution Functions -----------
 def draw_solution_cell(x, y):
-    pygame.draw.rect(screen, PURPLE, (
-    x - CELL_WIDTH // 2 - CELL_WIDTH // 4, y - CELL_WIDTH // 2 - CELL_WIDTH // 4, CELL_WIDTH // 2, CELL_WIDTH // 2), 0)
+    offset = CELL_WIDTH//4
+    width = CELL_WIDTH//2
+    pygame.draw.rect(screen, PURPLE, (x + offset, y + offset, width, width), 0)
     pygame.display.update()
-    print("applepie")
 
 
 def plot_route_back(sol):
-    x = cols * CELL_WIDTH
-    y = rows * CELL_WIDTH
+    x = (cols-1)*CELL_WIDTH
+    y = (rows-1)*CELL_WIDTH
 
     draw_solution_cell(x, y)
 
-    '''
     while (x, y) != (0, 0):
-        # print(x, y)
         x, y = sol[x, y]
         draw_solution_cell(x, y)
-        time.sleep(0.1)'''
+        time.sleep(0.1)
 
 
 # -------- Main Game Loop -----------
 # For every loop iteration, check for changes and draw the cells on the grid
 # Keep running the game until 'running' is set to false
 
-maze = Grid(screen, rows, cols)
-maze.init_maze()
+maze = Grid(screen, rows, cols) # creates an empty maze
 
 while running:
     # stop the game if the user presses the game window's quit button
@@ -63,9 +59,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    if not generate_done:
-        # Fill the background grey to create an empty grid
-        screen.fill(GREY)
+    if not generate_done:  # Keep drawing maze cells until 'generate_done' is True
+        screen.fill(GREY)  # Fill the background grey
 
         # select the current cell and mark it as visited
         maze.current_cell.visited = True
@@ -76,9 +71,11 @@ while running:
             for x in range(cols):
                 maze.grid[y][x].draw()
 
-        maze.next_cell = maze.current_cell.findNeighborCells()
+        maze.next_cell = maze.current_cell.findNeighborCells() # select the next cell to draw
 
+        # If there is a new cell to select, set it to current cell and create walls
         if maze.next_cell:
+            maze.solution[maze.next_cell.x, maze.next_cell.y] = (maze.current_cell.x, maze.current_cell.y)
 
             maze.current_cell.neighbors = []
 
@@ -94,25 +91,16 @@ while running:
             maze.current_cell.current = False
             maze.current_cell = maze.stack.pop()
 
-        elif len(maze.stack) == 0:
-            maze.grid = []
-
-            for y in range(rows):
-                maze.grid.append([])
-                for x in range(cols):
-                    maze.grid[y].append(Cell(maze.screen, maze.grid, maze.cols, maze.rows, x, y))
-
-            maze.current_cell = maze.grid[0][0]
-            maze.next_cell = 0
+        elif len(maze.stack) == 0:  # If the maze has rendered all cells, stop drawing
             generate_done = True
-    else:
-        pprint(maze.solution)
+    else:  # If the maze has been generated, display the solution animation
+        # pprint(maze.solution)
         plot_route_back(maze.solution)
 
     # Display the game screen
     pygame.display.flip()
 
-    # frame rate
+    # frame rate per second
     clock.tick(60)
 
 # When the loop is stopped ('running' = false), end the game

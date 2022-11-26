@@ -11,7 +11,7 @@ PURPLE = (100, 0, 100)
 BLUE = (0, 0, 255)
 
 # Cell dimensions (pixels)
-CELL_WIDTH = 75
+CELL_WIDTH = 150
 
 
 # -------- Creating a template (known as a class) for each maze cell -----------
@@ -51,15 +51,15 @@ class Cell:
 
             # Draw the walls (colored black) of the cell if they exist
             if self.walls[0]:  # top
-                pygame.draw.line(self.screen, PURPLE, (self.x, self.y), ((self.x + CELL_WIDTH), self.y), 1)
+                pygame.draw.line(self.screen, BLACK, (self.x, self.y), ((self.x + CELL_WIDTH), self.y), 1)
             if self.walls[1]:  # right
-                pygame.draw.line(self.screen, PURPLE, ((self.x + CELL_WIDTH), self.y),
+                pygame.draw.line(self.screen, BLACK, ((self.x + CELL_WIDTH), self.y),
                                  ((self.x + CELL_WIDTH), (self.y + CELL_WIDTH)), 1)
             if self.walls[2]:  # bottom
-                pygame.draw.line(self.screen, PURPLE, ((self.x + CELL_WIDTH), (self.y + CELL_WIDTH)),
+                pygame.draw.line(self.screen, BLACK, ((self.x + CELL_WIDTH), (self.y + CELL_WIDTH)),
                                  (self.x, (self.y + CELL_WIDTH)), 1)
             if self.walls[3]:  # left
-                pygame.draw.line(self.screen, PURPLE, (self.x, (self.y + CELL_WIDTH)), (self.x, self.y), 1)
+                pygame.draw.line(self.screen, BLACK, (self.x, (self.y + CELL_WIDTH)), (self.x, self.y), 1)
 
     def findNeighborCells(self):
         # Indicate which neighboring cells are valid (within the maze boundaries)
@@ -86,7 +86,7 @@ class Cell:
             if not self.left.visited:
                 self.neighbors.append(self.left)
 
-        # If the
+        # If the cell has neighbors, return them. Otherwise, return false
         if len(self.neighbors) > 0:
             self.next_cell = self.neighbors[random.randrange(0, len(self.neighbors))]
             return self.next_cell
